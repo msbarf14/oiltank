@@ -5,16 +5,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+use App\Http\Controllers\TankController;
 
 Route::get('/', function () {
    return Redirect::to('/login');
@@ -28,4 +19,7 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
+
+    Route::get('/tank', [TankController::class, 'index'])->name('tank');
+    Route::get('/tank/detail/{tank:id}', [TankController::class, 'show'])->name('tank.detail');
 });
