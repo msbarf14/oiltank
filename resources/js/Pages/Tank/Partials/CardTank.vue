@@ -2,7 +2,11 @@
 import { Inertia } from '@inertiajs/inertia'
 
 const props = defineProps({
-    data: Object
+    data: Object,
+    isRoute: {
+        type: Boolean,
+        default: true
+    }
 })
 
 const labelStatus = () => {
@@ -23,7 +27,7 @@ const labelStatus = () => {
 }
 </script>
 <template>
- <div class="bg-white border p-3 rounded-lg relative hover:shadow-md" @click="Inertia.get(route('tank.detail', 1))">
+ <div :class="['bg-white border p-3 rounded-lg relative ', isRoute ? 'hover:shadow-md' : '']" @click="isRoute ? Inertia.get(route('tank.detail', data?.id)) : null">
     <div class="realtive"> 
         <p class="text-2xl font-semibold text-gray-600">{{data?.name}}</p>
         <span class="px-4 py-[0.5px] absolute right-3 bg-green-600 text-white text-sm rounded-full">{{labelStatus()}}</span>

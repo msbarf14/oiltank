@@ -19,8 +19,21 @@ class TankController extends Controller
         ]);
     }
 
-    public function show() {
-        return Inertia::render('Tank/Detail');
+    public function show(Tank $tank) {
+        $report = $tank->report->transform(fn($i) => [
+            'id' => $i->id,
+            'reporter' => $i->reporter,
+            'datetime' => $i->datetime,
+            'volume' => $i->volume,
+            'temp' => $i->temp,
+            'notes' => $i->notes,
+            'status' => $i->status,
+        ]);
+
+        return Inertia::render('Tank/Detail', [
+            'tank' => $tank,
+            'report' => $report
+        ]);
     }
 
     public function store(Request $request) {

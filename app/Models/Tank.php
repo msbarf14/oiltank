@@ -19,4 +19,7 @@ class Tank extends Model
         'status',
     ];
 
+    public function report() {
+        return $this->hasMany(Report::class, 'tank_id')->latest();
+    }
 }

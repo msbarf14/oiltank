@@ -56,7 +56,7 @@ const submit = () => {
                             <label class="text-sm text-gray-600">Nama Tank</label>
                             <InputJet v-model="form.name" class="w-full  py-1 border" placeholder="ex: TNK001OIL" required/>
                         </div>
-                         <div class="space-y-2 flex flex-col">
+                        <div class="space-y-2 flex flex-col">
                             <label class="text-sm text-gray-600">Temperature (Celcius &#8451;)</label>
                             <InputJet v-model="form.temp" type="number" class="w-full py-1 border" placeholder="ex: 1000" required/>
                             <small class="text-xs italic text-gray-500">Seusikan dengan kondisi tanki saat ini</small>
