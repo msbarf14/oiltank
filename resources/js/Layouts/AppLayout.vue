@@ -214,6 +214,9 @@ const logout = () => {
                         <JetResponsiveNavLink :href="route('dashboard')" :active="route().current('dashboard')">
                             Dashboard
                         </JetResponsiveNavLink>
+                         <JetResponsiveNavLink :href="route('tank')" :active="route().current('tank') || route().current('tank.*')">
+                            Oil Tank
+                        </JetResponsiveNavLink>
                     </div>
 
                     <!-- Responsive Settings Options -->

@@ -37,11 +37,11 @@ const submit = () => {
 <template>
     <AppLayout title="Dashboard">
         <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
                 <div class="flex space-x-3">
                     <ButtonJet @click="modalForm = true">Tambah Data Tank</ButtonJet>
                 </div>
-                <div class="mt-10 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-4">
+                <div class="mt-10 grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-4">
                     <div v-for="item in data">
                         <CardTank :data="item"/>
                     </div>
