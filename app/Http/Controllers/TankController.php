@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 
 use App\Models\Tank;
+use App\Models\Report;
 class TankController extends Controller
 {
     public function index() {
@@ -20,7 +21,7 @@ class TankController extends Controller
     }
 
     public function show(Tank $tank) {
-        $report = $tank->report->transform(fn($i) => [
+        $report = Report::where('tank_id', $tank->id)->latest()->get()->transform(fn($i) => [
             'id' => $i->id,
             'reporter' => $i->reporter,
             'datetime' => $i->datetime,
@@ -52,6 +53,12 @@ class TankController extends Controller
             'max_volume' => $input['max_volume'],
             'temp' => $input['temp'],
         ]);
+
+        return Redirect::to(route('tank'));
+    }
+
+    public function destroy(Tank $tank) {
+        $tank->delete();
 
         return Redirect::to(route('tank'));
     }

@@ -20,6 +20,6 @@ class Tank extends Model
     ];
 
     public function report() {
-        return $this->hasMany(Report::class, 'tank_id')->latest();
+        return $this->hasMany(Report::class, 'tank_id');
     }
 }

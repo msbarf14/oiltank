@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('reports', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('tank_id');
-            $table->foreign('tank_id')->references('id')->on('tanks');
+            $table->foreignId('tank_id')->constrained('tanks')->onDelete('cascade');
+
             $table->string('reporter');
             $table->integer('temp')->default(0);
             $table->bigInteger('volume')->default(0);
