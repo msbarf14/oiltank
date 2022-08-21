@@ -1,12 +1,32 @@
 <script setup>
 import { Inertia } from '@inertiajs/inertia'
 
+const props = defineProps({
+    data: Object
+})
+
+const labelStatus = () => {
+    switch (props.data?.status) {
+        case 'normal':
+                return 'Normal'
+            break;
+        case 'refuelling':
+                return 'Refuelling'
+            break;
+        case 'less_target':
+                return 'Tidak Mencapai Target'
+            break;
+    
+        default:
+            break;
+    }
+}
 </script>
 <template>
  <div class="bg-white border p-3 rounded-lg relative hover:shadow-md" @click="Inertia.get(route('tank.detail', 1))">
     <div class="realtive"> 
-        <p class="text-2xl font-semibold text-gray-600">TANK I</p>
-        <span class="px-4 py-[0.5px] absolute right-3 bg-green-600 text-white text-sm rounded-full">Full</span>
+        <p class="text-2xl font-semibold text-gray-600">{{data?.name}}</p>
+        <span class="px-4 py-[0.5px] absolute right-3 bg-green-600 text-white text-sm rounded-full">{{labelStatus()}}</span>
     </div>
     <hr class="border-dashed mt-3">
     <div class="space-y-2 mt-6">
@@ -19,7 +39,7 @@ import { Inertia } from '@inertiajs/inertia'
                 <small class="text-[10px]">Capcity</small>
             </div>
             <div class="text-right">
-                <h1 class="text-lg font-bold text-gray-700">20000</h1>
+                <h1 class="text-lg font-bold text-gray-700">{{data?.capacity}}</h1>
                 <p class="text-[12px] text-gray-600">Kilo Liter (KL)</p>
             </div>
         </div>
@@ -31,7 +51,7 @@ import { Inertia } from '@inertiajs/inertia'
                 <small class="text-[10px]">Max Capcity</small>
             </div>
             <div class="text-right">
-                <h1 class="text-lg font-bold text-gray-700">20000</h1>
+                <h1 class="text-lg font-bold text-gray-700">{{data?.max_volume}}</h1>
                 <p class="text-[12px] text-gray-600">Kilo Liter (KL)</p>
             </div>
         </div>
@@ -45,8 +65,8 @@ import { Inertia } from '@inertiajs/inertia'
                 <small class="text-[10px]">temperature</small>
             </div>
             <div class="text-right">
-                <h1 class="text-lg font-bold text-gray-700">20000</h1>
-                <p class="text-[12px] text-gray-600">Kilo Liter (KL)</p>
+                <h1 class="text-lg font-bold text-gray-700">{{data?.temp}}</h1>
+                <p class="text-[12px] text-gray-600">Celcius &#8451;</p>
             </div>
         </div>
     </div>

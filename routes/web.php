@@ -22,4 +22,5 @@ Route::middleware([
 
     Route::get('/tank', [TankController::class, 'index'])->name('tank');
     Route::get('/tank/detail/{tank:id}', [TankController::class, 'show'])->name('tank.detail');
+    Route::post('/tank', [TankController::class, 'store'])->name('tank.store');
 });
